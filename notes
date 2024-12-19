@@ -1,0 +1,21 @@
+#Ultimate NixOS Guide - VimJoyer - https://www.youtube.com/watch?v=a67Sv4Mbxmc:
+## Notes
+- when using traditonal os such as linux(Arch, Ubuntu, ect.), windows, macos, android, ios, ect. You do one of the following:
+- - install packages | apps, functions, widgets, ect.
+- - modify config files | change settings, addresses and values
+- - enable services | helper functions, api calls
+- this is known as an imperative approach
+- NixOS uses what is known as a decalrative aproach, this means the following:
+- - on NixOS your system starts from nothing and you add only what you want/need
+- - you also only configure what you want/need 
+- - - this means if you want a bar to be neon cyan with purple pokadots and your willing to write the shader to to so
+- - - fucking go for it!
+- - Think installing with maven or a package.json file rather than ```pip install``` except with your whole OS no more imcompatable drivers on decade old software... still dont know how we havent solved that? no more stack overflow, just everything has exactly what i needs and if it cant get it it says "sorry no can do close something else first" and you can close anything. dont want your task bar in the background using up resources, *poof* gone, that web browser backend really needed whn your just going twitter anyway *poof* gone, with the correct setup Nix can acomplish this and create profiles for every set up so if you wanna browse twitter create a profile for that and open that profile as a app, browsing twitter is now a drain on your pc as much as it is you so maybe get off it and open up something useful like internet archive where you can find books from people from 80+ years ago telling us the solutiuons to problems we are still facing today!!! 
+
+anyway slight side track (teehee ^^) in currently 50 seconds in to this video and after 5 days of only required sleep and nix research i am certain that if this is not some how ont he write path to me fixing all my pc problems then by god i'm going to make something that is.
+
+
+### Installing
+### Flakes
+### Home-manager
+### Config structuring
