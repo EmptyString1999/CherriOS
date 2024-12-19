@@ -2,21 +2,24 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 
 {
 	imports =
 		[ # Include the results of the hardware scan.
 		./hardware-configuration.nix
-		inputs.home-manager.nixosModules.default
+		./main-user.nix
 		];
 
+	main-user.enable = true;
+	main-user.userName = "ethan"
 # Bootloader.
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
 
 	networking.hostName = "nixos-home"; # Define your hostname.
 	networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
+	nix.settings.experimental-features = ["nix-command" "flakes"];
 
 # Configure network proxy if necessary
 # networking.proxy.default = "http://user:password@proxy:port/";
@@ -88,18 +91,8 @@
 		extraGroups = [ "networkmanager" "wheel" ];
 		packages = with pkgs; [
 			firefox
-			vim
-			neovim
 		];
 	};
-
-	home-manager = {
-		#also pass inputs to home-manager modules
-		specialArgs = {inherit inputs;};
-		users = {
-			"ethan" = import ./home.nix
-		}
-	}
 
 # Enable automatic login for the user.
 	services.xserver.displayManager.autoLogin.enable = true;
@@ -157,16 +150,7 @@
 		pkgs.kitty
 		streamlink
 		vlc
-		waybar
-		(waybar.overrideAttrs (oldAttrs: {
-			mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
-			})
-		)
-		dunst
-		libnotify
-		swww
-		rofi-wayland
-	];
+		];
 
 xdg.portal.enable = true;
 xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
@@ -197,7 +181,5 @@ networking.firewall.enable = true;
 # Before changing this value read the documentation for this option
 # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
 	system.stateVersion = "24.11"; # Did you read the comment?
-
-exec-once=bash ~/.config/hypr/start.sh	
 
 }
