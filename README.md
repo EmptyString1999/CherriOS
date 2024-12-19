@@ -1,0 +1,2 @@
+# CherriOS
+My nix configs
